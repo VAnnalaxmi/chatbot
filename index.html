@@ -1,0 +1,340 @@
+register.js
+function validate()
+ {
+     
+      var fn = frm.fname.value;
+      localStorage.setItem("firstname",fn)
+     for(x in fn)
+         {
+             ch=fn.charCodeAt(x);
+             if(ch<65||ch>90 && ch<97||ch>122)
+                 {
+                 alert("Invalid firstname");
+                 return false;
+                 }
+         }
+         var ln = frm.lname.value;
+         localStorage.setItem("lastname",ln)
+     for(y in ln)
+         {
+             ch=ln.charCodeAt(y);
+             if(ch<65||ch>90 && ch<97||ch>122)
+                 {
+                 alert("Invalid lastname");
+                 return false;
+                 }
+         }
+     var phn = frm.phone.value;
+     localStorage.setItem("phone",phn)
+     var lenp = phn.length;
+     if (lenp!==10)
+     {    alert("Phone no should be exactly 10 digits");
+         return false;
+     }
+    
+    var pwd1=frm.pwd.value;
+    localStorage.setItem("password",pwd1)
+    var pwdl=pwd1.length;
+    if(pwdl%2===1)
+        {
+        alert("Password should contain even number of characters");
+        return false;
+        }
+    if(pwdl > 8)
+        {
+            alert("Password should not exceed 8 digits");
+            return false;
+        }
+   
+     var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+     var mail=frm.mailid.value;
+     localStorage.setItem("email",mail)
+if (reg.test(mail)){
+alert("Registration Successfully done!!"); 
+}
+else{
+    alert("Invalid email");
+return false;
+}
+    return true;
+
+}
+login.js
+function LoginValidate(){
+    var enteremail=document.getElementById('email').value;
+    var enterpassword=document.getElementById('pwd').value;
+    var getEmail=localStorage.getItem('email')
+    var getPwd=localStorage.getItem('password')
+    if(enteremail==getEmail){
+        if(enterpassword==getPwd){
+            alert("Login success");
+            window.location="welcome.html";
+            return false;
+        } else{
+            alert("wrong password");
+        }
+    }else{
+        alert('invalid details');
+    }
+}
+4th
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Image Slider</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style type="text/css">
+        body {
+            background-color: black;
+        }
+
+        .slider {
+            margin-top: 10%;
+        }
+       .slider img {
+            display: none;
+        }
+        .slider img.active {
+            display: block;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="slider">
+            <img src="images/1.jpg">
+            <img src="images/2.jpg">
+            <img src="images/3.jpg">
+            <img src="images/4.jpg" class="active">
+            <img src="images/5.jpg">
+        </div>
+        <br><br>
+        <input type="button" class="btn btn-primary" onclick="changeSlide('previous')" value="Previous">
+        <input type="button" class="btn btn-success" onclick="slideshow(this)" value="Start Slideshow">
+        <input type="button" class="btn btn-primary" onclick="changeSlide('next')" value="Next">
+    </center>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var stopSlideshow = false;
+       function slideshow(caller) 
+        {
+            var status = $(caller).attr('value');
+            if (status.indexOf('Start') > -1) {
+                stopSlideshow = false;
+                $(caller).attr('value', 'Stop Slideshow');
+                $(caller).addClass('btn-danger').removeClass('btn-success');
+            } else {
+                stopSlideshow = true;
+                $(caller).attr('value', 'Start Slideshow');
+                $(caller).addClass('btn-success').removeClass('btn-danger');
+            }
+            var interval = setInterval(function () {
+                if (!stopSlideshow)
+                    changeSlide('next');
+                else
+                    clearInterval(interval);
+            }, 2000);
+        }
+        function changeSlide(direction) {
+            var currentImg = $('.active');
+            var nextImg = currentImg.next();
+            var previousImg = currentImg.prev();
+
+            if (direction == 'next') {
+                if (nextImg.length)
+                    nextImg.addClass('active');
+                else
+                    $('.slider img').first().addClass('active');
+            } else {
+                if (previousImg.length)
+                    previousImg.addClass('active');
+                else
+                    $('.slider img').last().addClass('active');
+            }
+            currentImg.removeClass('active');
+        }
+    </script>
+</body>
+</html>
+wekk 10
+layout.js 
+import { Container, Nav, Navbar } from "react-bootstrap"; 
+import { Outlet, Link } from "react-router-dom"; 
+const Layout = () => { 
+return ( 
+<> 
+<Navbar bg="primary" data-bs-theme="dark"> 
+<Container> 
+<Navbar.Brand href="/">React SPA</Navbar.Brand> 
+<Nav className="me-auto"> 
+<Nav.Link as={Link} to="/">Home</Nav.Link> 
+<Nav.Link as={Link} to="/profile">Profile</Nav.Link> 
+<Nav.Link as={Link} to="/contact">Contact Us</Nav.Link> 
+</Nav> 
+</Container> 
+</Navbar> 
+<Container className="mt-4"> 
+<Outlet /> 
+</Container> 
+</> 
+); 
+}; 
+export default Layout; 
+contactus.js 
+const ContactUs = () => { 
+return<h1>CMRIT, Kandlakoya Village, Medchal, Hyderabad</h1>; 
+}; 
+ 
+export default ContactUs; 
+ 
+profile.js 
+ 
+const Home = () => { 
+return<h1>Welcome to CMRIT Profile Page</h1>; 
+}; 
+ 
+export default Home; 
+ 
+home.js 
+ 
+const Home = () => { 
+return<h1>Welcome to CMRIT Home Page</h1>; 
+}; 
+ 
+export default Home; 
+—------------------------------------------------------------------------- 
+ 
+Open app.js and remove all the existing code inside that and paste the following. 
+ 
+app.js 
+ 
+import React from "react"; 
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; 
+import Home from"./home"; 
+import Profile from"./profile"; 
+import ContactUs from"./contactus"; 
+ 
+function App() { 
+  return ( 
+    <Router> 
+      <div> 
+        <nav> 
+          <ul> 
+            <li><Link to="/">Home</Link></li> 
+            <li><Link to="/profile">Profile</Link></li> 
+            <li><Link to="/contactus">Contact Us</Link></li> 
+          </ul> 
+        </nav> 
+ 
+        <Routes> 
+          <Route path="/"element={<Home/>}/> 
+          <Route path="/profile"element={<Profile/>}/> 
+          <Route path="/contactus"element={<ContactUs/>}/> 
+        </Routes> 
+      </div> 
+    </Router> 
+  ); 
+} 
+ 
+export default App;
+week 8
+Step 11: Open ‘index.html’ and put the following code into it 
+<!doctype html> 
+<html lang="en"> 
+<head> 
+<meta charset="utf-8"> 
+<title>Week 8</title> 
+<base href="/"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="icon" type="image/x-icon" href="favicon.ico"> 
+<link rel="stylesheet" 
+href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" 
+crossorigin="anonymous"> 
+</head> 
+<body> 
+<app-root></app-root> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" 
+crossorigin="anonymous" ></script> 
+</body> 
+</html> 
+Step 12: Open ‘header.html’ and paste the following code into it 
+<nav class="navbar navbar-expand-lg bg-body-tertiary"> 
+<div class="container-fluid"> 
+<a class="navbar-brand" [routerLink]="['/']">SPA-Demo</a> 
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+aria-label="Toggle navigation"> 
+<span class="navbar-toggler-icon"></span> 
+</button> 
+<div class="collapse navbar-collapse" id="navbarNav"> 
+<ul class="navbar-nav"> 
+<li class="nav-item"> 
+<a class="nav-link active" [routerLinkActiveOptions]="{exact:true}" 
+routerLinkActive="active" aria-current="page" [routerLink]="['/']">Home</a> 
+</li> 
+<li class="nav-item"> 
+<a class="nav-link" [routerLinkActiveOptions]="{exact:true}" 
+routerLinkActive="active" [routerLink]="['/profile']">Profile</a> 
+</li> 
+</ul> 
+</div> 
+</div> 
+</nav> 
+Step 13: Open ‘home.html’ and paste the following code into it 
+<section class ="container mt-5 text-center"> 
+<h1> welcome to SPA Demo Page</h1> 
+</section> 
+Step 14: Open ‘profile.html’ and paste the following code into it 
+<section class ="container mt-5 text-center"> 
+<h1> welcome to MyProfile Page</h1> 
+</section> 
+Step 15: Open ‘app.ts’ and paste the following code into it 
+import { Component, signal } from '@angular/core'; 
+import { Header } from "./header/header"; 
+import { RouterOutlet,RouterModule } from '@angular/router'; 
+@Component({ 
+selector: 'app-root', 
+imports: [Header, RouterOutlet,RouterModule], 
+templateUrl: './app.html', 
+styleUrl: './app.css' 
+}) 
+export class App { 
+protected readonly title = signal('spa'); 
+} 
+Step 16: Open ‘header.ts’ and paste the following code into it 
+import { Component } from '@angular/core'; 
+import { RouterLink, RouterLinkActive } from "@angular/router"; 
+@Component({ 
+selector: 'app-header', 
+imports: [RouterLink, RouterLinkActive], 
+templateUrl: './header.html', 
+styleUrl: './header.css', 
+}) 
+export class Header { 
+} 
+Step 17: Open ‘app.routes.ts’ and paste the following code into it 
+import { Routes } from '@angular/router'; 
+import { Home } from './home/home'; 
+import { Profile } from './profile/profile'; 
+export const routes: Routes = [ 
+{ 
+path:'', 
+component:Home, 
+title:"Home" 
+}, 
+{ 
+}] 
+path:'profile', 
+component:Profile, 
+title:"Profile" 
+
+
+
+
+
+ 
+
+
