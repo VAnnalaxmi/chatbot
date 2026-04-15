@@ -329,8 +329,65 @@ title:"Home"
 }] 
 path:'profile', 
 component:Profile, 
-title:"Profile" 
+title:"Profile"
+           
+profile.html           
+           <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-sm w-50 mt-5 p-2 " *ngIf="user">
+    <img class="avatar d-block mx-auto" src="https://cdn-icons-png.freepik.com/512/5733/5733290.png" alt="Icon"/>
+    <h2 class="text-center">hi,{{user.name}}</h2>
+    <table class="table table-bordered mt-3">
+            <tr>
+                <th>Username</th>
+                <td>{{user.username}}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{user.phone}}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{user.address?.city}}</td>
+            </tr>
+            <tr>
+                <th>ZIP Code</th>
+                <td>{{user.address?.zipcode}}</td>
+            </tr>
+            <tr>
+                <th>Website</th>
+                <td>{{user.website}}</td>
+            </tr>
 
+    </table>
+</div>
+</div>
+profile.ts
+           import { CommonModule } from '@angular/common';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { Component,OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-profile',
+  standalone:true,
+  imports: [HttpClientModule,CommonModule],
+  templateUrl: './profile.html',
+  styleUrl: './profile.css'
+})
+export class Profile implements OnInit{
+  user:any 
+  constructor(private http:HttpClient){
+  }
+  ngOnInit(): void {
+    this.http.get('https://jsonplaceholder.typicode.com/users/10').subscribe((data:any)=>{
+      console.log(data);
+      this.user=data;
+    });
+  }
+}
 
 
 
