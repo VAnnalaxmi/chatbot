@@ -388,10 +388,349 @@ export class Profile implements OnInit{
     });
   }
 }
+package ATT;
 
 
 
+import java.util.List;
 
- 
 
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class WEEk9 {
+
+
+
+	public static void main(String[] args) throws InterruptedException {
+
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\student\\Desktop\\5E4\\chromedriver-win64/chromedriver.exe");
+
+		 ChromeDriver driver=new ChromeDriver();
+
+		 driver.get("https://duckduckgo.com");
+
+		 driver.manage().window().maximize();
+
+		 Thread.sleep(2000);
+
+		 driver.findElement(By.name("q")).sendKeys("Flipkart \n");Thread.sleep(2000);
+
+		 Thread.sleep(1000);
+
+		 driver.findElement(By.xpath("(//span[@class=\"EKtkFWMYpwzMKOYr0GYm LQVY1Jpkk8nyJ6HBWKAk\"])")).click();
+
+		 Thread.sleep(1000);
+
+		 driver.findElement(By.xpath("(//input[@class=\"lNPl8b\"])")).sendKeys("iphone \n");
+
+		 Thread.sleep(1000);
+
+		 
+
+		 List<WebElement> list1 = driver.findElements(By.xpath("//div[@class='RG5Slk']"));
+
+		 for(int i=0;i<list1.size();i++) {
+
+			 String s=list1.get(i).getText();
+
+			 Thread.sleep(1000);
+
+			 System.out.println("Product is: " +s);
+
+		 }
+
+	}
+
+
+
+}// Write your javascript code here week10.js!
+package ATT;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class week10 {
+	public static void main(String[] args) throws InterruptedException{
+	ChromeDriver driver=new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.get("https://duckduckgo.com/");
+	driver.findElement(By.name("q")).sendKeys("gmail \n");
+	Thread.sleep(1400);
+	driver.findElement(By.xpath("//h3[normalize-space()='Sign Up']")).click();
+	Thread.sleep(1400);
+	driver.findElement(By.xpath("//input[@id='firstName']")).sendKeys("john");
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//input[@id='lastName']")).sendKeys("john");
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//span[normalize-space()='Next']")).click();
+	Thread.sleep(1400);
+	driver.findElement(By.xpath("//div[@class='VfPpkd-aPP78e']")).click();
+	Thread.sleep(1400);
+	driver.findElement(By.xpath("//li[@data-value='5']")).click();
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//input[@id='day']")).sendKeys("24");
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//input[@id='year']")).sendKeys("2006");
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("(//div[@class='VfPpkd-aPP78e'])[2]")).click();
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("(//li[@data-value='1'])[2]")).click();
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("(//span[@jsname='V67aGc'])[4]")).click();
+	Thread.sleep(1400);
+	driver.findElement(By.xpath("(//input[@class='VfPpkd-gBXA9-bMcfAe'])[1]")).click();
+	Thread.sleep(1400);
+	driver.findElement(By.xpath("//span[@class='VfPpkd-vQzf8d']")).click();
+	Thread.sleep(1400);
+	driver.findElement(By.xpath("//input[@class='whsOnd zHQkBf']")).sendKeys("john123");
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("(//input[@class='whsOnd zHQkBf'])[2]")).sendKeys("john123");
+	Thread.sleep(1400);
+	driver.findElement(By.xpath("//span[@class='VfPpkd-vQzf8d']")).click();
+}
+}
+// Write your javascript code here week12.js!
+package ATT1;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class Week12 {
+	public static void main(String[] args)throws InterruptedException, AWTException {
+		EdgeDriver driver = new EdgeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://duckduckgo.com/");
+		driver.findElement(By.xpath("//input[@id=\"searchbox_input\"]")).sendKeys("convert word to pdf \n");
+		driver.findElement(By.xpath("//span[normalize-space()=\"Convert Word to PDF. Documents DOC to PDF - iLovePDF\"]")).click();
+		driver.findElement(By.xpath("//span[normalize-space()='Select WORD files']")).click();
+		StringSelection path = new StringSelection("C:\\Users\\student\\Downloads");
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(path, null);
+		Robot robo = new Robot();
+		robo.keyPress(KeyEvent.VK_CONTROL);
+		robo.keyPress(KeyEvent.VK_V);
+		robo.keyRelease(KeyEvent.VK_V);
+		robo.keyRelease(KeyEvent.VK_CONTROL);Thread.sleep(2000);
+		robo.keyPress(KeyEvent.VK_ENTER);
+		robo.keyRelease(KeyEvent.VK_ENTER);Thread.sleep(2000);
+		
+		path = new StringSelection("\"C:\\Users\\student\\Downloads\\sample1 (1).doc\"");
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(path, null);
+		robo.keyPress(KeyEvent.VK_CONTROL);
+		robo.keyPress(KeyEvent.VK_V);
+		robo.keyRelease(KeyEvent.VK_V);
+		robo.keyRelease(KeyEvent.VK_CONTROL);Thread.sleep(2000);
+		robo.keyPress(KeyEvent.VK_ENTER);
+		robo.keyRelease(KeyEvent.VK_ENTER);Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//span[normalize-space()='Convert to PDF']")).click();Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[@slot=\"downloadUrl\"]")).click();
+		
+		
+	}
+
+}
+// Write your javascript code here week8.js!
+package ATT1;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Week8{
+
+	public static void main(String[] args)throws InterruptedException, AWTException {
+		   System.setProperty("webdriver.chrome.driver",
+	                "\"C:\\\\\\\\Users\\\\\\\\student\\\\\\\\Desktop\\\\\\\\5H9\\\\\\\\chromedriver-win64/chromedriver.exe");
+		EdgeDriver driver =new EdgeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://duckduckgo.com");
+		driver.findElement(By.name("q")).sendKeys("CMRIT Hyderabad \n");
+		driver.findElement(By.xpath("//a[text()='Images']")).click();
+		Thread.sleep(1000);
+		WebElement img = driver.findElement(By.xpath("//img[@alt='CMR Institute Of Technology - [CMRIT] Hyderabad: Admission, Courses ...']"));
+		img.click();
+				Actions action=new Actions(driver);
+				action.contextClick(img).build().perform();
+				Thread.sleep(1000);
+				Robot robot=new Robot();
+				robot.keyPress(KeyEvent.VK_DOWN);
+				robot.keyPress(KeyEvent.VK_DOWN);
+				Thread.sleep(1000);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				Thread.sleep(1000);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				Thread.sleep(1000);
+	}
+}
+
+ // Write your javascript code here week5.js!
+package ATT;
+
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Week5 {
+	
+		public static void main(String[] args)throws InterruptedException {
+			// TODO Auto-generated method stub
+			ChromeDriver driver = new ChromeDriver();
+			driver.manage().window().maximize();
+			driver.get("https://duckduckgo.com/");Thread.sleep(2000);
+			driver.findElement(By.name("q")).sendKeys("CMRIT HYDERABAD\n");Thread.sleep(2000);
+			driver.findElement(By.xpath("//span[@class='EKtkFWMYpwzMKOYr0GYm LQVY1Jpkk8nyJ6HBWKAk'][1]")).click();Thread.sleep(2000);
+			driver.findElement(By.xpath("//button[@class='close-btn']")).click();Thread.sleep(2000);
+			driver.findElement(By.xpath("//a[normalize-space()='ACADEMICS'][1]")).click();Thread.sleep(2000);
+			driver.findElement(By.xpath("//a[normalize-space()='SYLLABUS'][1]")).click();Thread.sleep(2000);
+			driver.findElement(By.xpath("//a[normalize-space()='B.Tech Syllabus'][1]")).click();Thread.sleep(2000);
+			
+			driver.findElement(By.xpath("//a[normalize-space()='B.Tech. Computer Science and Engineering (AI&ML)']")).click();Thread.sleep(2000);
+			Set<String> handles=driver.getWindowHandles();
+			String NewTab= null;
+			for (String h:handles) NewTab=h;
+			if(NewTab != null) {
+				driver.switchTo().window(NewTab);
+				}
+			driver.findElement(By.xpath("//div[@class='pYTkkf-Bz112c-RLmnJb'][1]")).click();Thread.sleep(2000);
+			System.out.println("Syllabus Downloaded");		
+		}
+
+	}
+package ATT;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class WEEK2{
+	public static void main(String a[]) throws InterruptedException {
+	ChromeDriver driver = new ChromeDriver();
+    driver.manage().window().maximize();
+
+    driver.get("https://duckduckgo.com/");
+    driver.findElement(By.name("q")).sendKeys("Mercury Travels\n");
+    Thread.sleep(2000);
+
+    driver.findElement(By.xpath("//span[normalize-space()='Mercury Travels']")).click();
+    Thread.sleep(3000);
+
+    driver.findElement(By.xpath("(//a[normalize-space()='Customer Login'])[2]")).click();
+    Thread.sleep(2000);
+
+    driver.findElement(By.xpath("(//a[normalize-space()='Register'])[2]")).click();
+    Thread.sleep(2000);
+
+    driver.findElement(By.id("acc_first_name")).sendKeys("prasanna");
+    Thread.sleep(1000);
+
+    driver.findElement(By.id("acc_last_name")).sendKeys("sabavath");
+    Thread.sleep(1000);
+
+    driver.findElement(By.id("acc_user_email")).sendKeys("abc@gmail.com");
+    Thread.sleep(1000);
+
+    driver.findElement(By.id("acc_user_password")).sendKeys("3612");
+    Thread.sleep(1000);
+
+    driver.findElement(By.id("acc_user_passconf")).sendKeys("3612");
+    Thread.sleep(1000);
+
+    driver.findElement(By.id("acc_mobile_no")).sendKeys("8341941365");
+    Thread.sleep(1000);
+
+    driver.findElement(By.xpath("(//button[normalize-space()='Register'])[1]")).click();
+    Thread.sleep(2000);
+
+    driver.quit();
+}
+}package ATT;
+
+
+
+import java.util.Set;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class WEEK3 {
+
+
+
+public static void main(String[] args) throws InterruptedException {
+
+ChromeDriver driver=new ChromeDriver();
+
+driver.manage().window().maximize();
+
+driver.get("https://duckduckgo.com/");
+
+driver.findElement(By.name("q")).sendKeys("Facebook \n");Thread.sleep(2000);
+
+driver.findElement(By.xpath("//span[normalize-space()='Facebook']")).click();Thread.sleep(2000);
+
+driver.findElement(By.xpath("//span[text()='Create new account']")).click();Thread.sleep(2000);
+
+Set<String> last=driver.getWindowHandles();
+
+String new1=null;
+
+for(String h1:last)new1=h1;
+
+if(new1!=null)driver.switchTo().window(new1);
+
+driver.findElement(By.xpath("//input[@name='firstname']")).sendKeys("Gopala"); Thread.sleep(2000);
+
+driver.findElement(By.xpath("//input[@name='lastname']")).sendKeys("Akhila"); Thread.sleep(2000);
+
+driver.findElement(By.xpath("//select[@name='birthday_day']")).sendKeys("17");Thread.sleep(2000);
+
+driver.findElement(By.xpath("//select[@name='birthday_month']")).sendKeys("Jan");Thread.sleep(2000);
+
+driver.findElement(By.xpath("//select[@name='birthday_year']")).sendKeys("2007");Thread.sleep(2000);
+
+driver.findElement(By.xpath("//label[text()='Female']")).click();Thread.sleep(2000);
+
+driver.findElement(By.xpath("//input[@name='reg_email__']")).sendKeys("gopalaakhila17@gmail.com");Thread.sleep(2000);
+
+driver.findElement(By.xpath("//input[@name='reg_passwd__']")).sendKeys("akhila@17");Thread.sleep(2000);
+
+driver.findElement(By.xpath("//button[@name='websubmit']")).click();Thread.sleep(10000);
+
+driver.quit();
+
+}
+
+
+
+}
 
